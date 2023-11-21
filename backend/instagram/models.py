@@ -2,6 +2,10 @@ from django.db import models
 
 class Post(models.Model):
   message = models.TextField()
+  photo = models.ImageField(
+    blank=True,
+    # upload_to='instagram/post/%Y/%m/%d' # => media 파일이 많아지는 경우 분할하여 사용
+  )
   is_public = models.BooleanField(default=False, verbose_name='공개여부')
   created_at = models.DateTimeField(auto_now_add=True) # 레코드가 생성될 때 입력
   updated_at = models.DateTimeField(auto_now=True) # 수정 시각이 입력
